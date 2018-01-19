@@ -78,6 +78,3 @@ while True :
     move()
     time.sleep(0.02)
     pygame.display.update()
-
-
-
