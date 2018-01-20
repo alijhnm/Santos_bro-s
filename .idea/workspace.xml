@@ -2,10 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fc7f013-3374-460e-a9e6-2f062a4b535e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Fred.py" />
-      <change beforePath="$PROJECT_DIR$/#1 Game.py" afterPath="$PROJECT_DIR$/#1 Game.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/end.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/start.jpg" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bazi_adadi.py" afterPath="$PROJECT_DIR$/bazi_adadi.py" />
+      <change beforePath="$PROJECT_DIR$/Fred.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bazi_adadi.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cat.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cat.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/chicken.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/chicken.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cow.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cow.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dog.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dog.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/farm.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/horse.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/horse.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/mouse.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/mouse.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/pig.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/pig.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/pygame_test.py" afterPath="$PROJECT_DIR$/pygame_test.py" />
+      <change beforePath="$PROJECT_DIR$/rooster.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/rooster.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/sheep.ogg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/sheep.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/sound.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/stop.png" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,18 +38,33 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Project1$pygame_test.coverage" NAME="pygame_test Coverage Results" MODIFIED="1516431565380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project1$bazi_adadi.coverage" NAME="bazi_adadi Coverage Results" MODIFIED="1516431591353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Project1$Fred.coverage" NAME="Fred Coverage Results" MODIFIED="1516432736291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Project1$_1_Game.coverage" NAME="#1 Game Coverage Results" MODIFIED="1516431263843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project1$pygame_test.coverage" NAME="pygame_test Coverage Results" MODIFIED="1516443695123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project1$Fred.coverage" NAME="Fred Coverage Results" MODIFIED="1516437148598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project1$Path_finding.coverage" NAME="Path_finding Coverage Results" MODIFIED="1516435418435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project1$_1_Game.coverage" NAME="#1 Game Coverage Results" MODIFIED="1516444370544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project1$Mouse.coverage" NAME="Mouse Coverage Results" MODIFIED="1516444547028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Project1$Jump.coverage" NAME="Jump Coverage Results" MODIFIED="1516444038488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="bazi_adadi.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bazi_adadi.py">
+      <file leaf-file-name="pygame_test.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pygame_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+            <state relative-caret-position="70">
+              <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Jump.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Jump.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -34,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pygame_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pygame_test.py">
+      <file leaf-file-name="Mouse.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Mouse.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            <state relative-caret-position="410">
+              <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -49,22 +87,10 @@
       <file leaf-file-name="#1 Game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/#1 Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="77" column="16" lean-forward="true" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+            <state relative-caret-position="394">
+              <caret line="138" column="60" lean-forward="false" selection-start-line="138" selection-start-column="60" selection-end-line="138" selection-end-column="60" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Fred.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Fred.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="102" column="79" lean-forward="false" selection-start-line="102" selection-start-column="79" selection-end-line="102" selection-end-column="79" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,10 +111,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pygame_test.py" />
-        <option value="$PROJECT_DIR$/#1 Game.py" />
         <option value="$PROJECT_DIR$/bazi_adadi.py" />
+        <option value="$PROJECT_DIR$/Path_finding.py" />
         <option value="$PROJECT_DIR$/Fred.py" />
+        <option value="$PROJECT_DIR$/pygame_test.py" />
+        <option value="$PROJECT_DIR$/Jump.py" />
+        <option value="$PROJECT_DIR$/#1 Game.py" />
+        <option value="$PROJECT_DIR$/Mouse.py" />
       </list>
     </option>
   </component>
@@ -101,7 +130,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="975" />
+    <option name="width" value="800" />
     <option name="height" value="860" />
   </component>
   <component name="ProjectView">
@@ -152,7 +181,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Fred">
+  <component name="RunManager" selected="Python.Mouse">
     <configuration name="Fred" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -167,6 +196,44 @@
       <module name="Project1" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Fred.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="Jump" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Project1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Jump.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="Mouse" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Project1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Mouse.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -191,25 +258,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="bazi_adadi" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Project1" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bazi_adadi.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="pygame_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -229,18 +277,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.pygame_test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.bazi_adadi" />
-      <item index="2" class="java.lang.String" itemvalue="Python.#1 Game" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Fred" />
+      <item index="1" class="java.lang.String" itemvalue="Python.#1 Game" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Fred" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Jump" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Mouse" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.Fred" />
-        <item index="1" class="java.lang.String" itemvalue="Python.bazi_adadi" />
-        <item index="2" class="java.lang.String" itemvalue="Python.pygame_test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.#1 Game" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.Mouse" />
+        <item index="1" class="java.lang.String" itemvalue="Python.#1 Game" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Jump" />
+        <item index="3" class="java.lang.String" itemvalue="Python.pygame_test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Fred" />
       </list>
     </recent_temporary>
   </component>
@@ -279,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516369262542</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added #1 Game,Edited Bazi adadi.py">
+      <created>1516433078701</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1516433078701</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -292,7 +349,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294271" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.073125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -318,7 +375,8 @@
     <MESSAGE value="added baziadadi.py" />
     <MESSAGE value="added flappy bird" />
     <MESSAGE value="added #1 Game" />
-    <option name="LAST_COMMIT_MESSAGE" value="added #1 Game" />
+    <MESSAGE value="added #1 Game,Edited Bazi adadi.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="added #1 Game,Edited Bazi adadi.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -329,9 +387,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -339,9 +395,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -349,9 +403,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -364,10 +416,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pygame_test.py">
+    <entry file="file://$PROJECT_DIR$/Path_finding.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bazi_adadi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="79" column="27" lean-forward="false" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Fred.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="47" column="20" lean-forward="false" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Jump.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -376,30 +452,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/#1 Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="77" column="16" lean-forward="true" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+        <state relative-caret-position="394">
+          <caret line="138" column="60" lean-forward="false" selection-start-line="138" selection-start-column="60" selection-end-line="138" selection-end-column="60" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Fred.py">
+    <entry file="file://$PROJECT_DIR$/Mouse.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="102" column="79" lean-forward="false" selection-start-line="102" selection-start-column="79" selection-end-line="102" selection-end-column="79" />
+        <state relative-caret-position="410">
+          <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bazi_adadi.py">
+    <entry file="file://$PROJECT_DIR$/pygame_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+        <state relative-caret-position="70">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
