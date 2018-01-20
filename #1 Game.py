@@ -7,9 +7,7 @@ title_image = pygame.image.load('start.jpg')
 game_over_image = pygame.image.load('end.jpg')
 windowWidth = 711
 windowHeight = 711
-surface = pygame.display.set_mode((windowWidth,
-windowHeight))
-pygame.display.set_caption('Drop!')
+surface = pygame.display.set_mode((windowWidth,windowHeight))
 leftDown = False
 rightDown = False
 gameStarted = False
@@ -31,9 +29,9 @@ def movePlayer():
     rightOfPlayerOnPlatform = True
     if player['x']  >= windowWidth - player['width'] :
         player['x'] = windowWidth - player['width'] - 1
-    if surface.get_at((player['x'], player['y'] + player['height'])) == (0,0,0,255):
+    if surface.get_at((int(player['x']), int(player['y'] + player['height']))) == (0,0,0,255):
         leftOfPlayerOnPlatform = False
-    if surface.get_at((player['x'] + player['width'], player['y'] + player['height'])) == (0,0,0,255):
+    if surface.get_at((int(player['x'] + player['width']), int(player['y'] + player['height']))) == (0,0,0,255):
         rightOfPlayerOnPlatform = False
     if not (rightOfPlayerOnPlatform and leftOfPlayerOnPlatform) and player['y'] + player['height'] + player['vy'] < windowHeight:
         player['y'] += player['vy']
@@ -138,3 +136,4 @@ while True:
         createPlatform()
     time.sleep(0.02)
     pygame.display.update()
+    pygame.display.set_caption(str(platformsDroppedThrough))

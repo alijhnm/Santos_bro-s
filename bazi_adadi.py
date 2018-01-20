@@ -32,7 +32,7 @@ def move():
             player_x += player_vx
     if player_vy > 1:
         player_vy = player_vy * 0.9
-    else :
+    else:
         player_vy = 0
         jumped = False
     if 0 < player_y < window_height - player_size:
