@@ -13,6 +13,7 @@ AttackRange = 5
 small_area_of_effect = 5
 medium_area_of_effect = 7
 large_area_of_effect = 9
+window = pygame.display.set_mode((800,800))
 class Card:
     '''Doc for Card class'''
     def __init__(self,MaxHealth,Speed,AttackDamage,Type,TargetType,AttackRange,AttackInterval,AreaOfEffect,Size):
@@ -28,7 +29,6 @@ class Card:
         self.area_of_effect = AreaOfEffect
         self.size = Size
         self.elixir_cost = None
-
     def move(self,game):
         '''Doc for move function
         if self.y >  game.height / 2:
@@ -50,6 +50,7 @@ class Barbarian(Card):
         self.x = X
         self.y = Y
         self.elixir_cost = 2
+        self.image = pygame.image.load('Barrel.png')
 class Archer(Card):
     '''Doc for Archer'''
     def __init__(self,X,Y):
@@ -104,6 +105,10 @@ class Miner(Card):
 
 b = Barbarian(100,200)
 a = Archer(200,100)
-bomb = B
-print('Done!')
-print()
+print(b.image)
+i = 0
+while True:
+    i += 1
+    window.fill((0,0,0))
+    window.blit(b.image,(0,i))
+    pygame.display.update()
