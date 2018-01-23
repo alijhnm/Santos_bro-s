@@ -2,21 +2,29 @@ import pygame,sys,time
 import pygame.locals as GAME_GLOBALS
 import pygame.event as GAME_EVENTS
 import pygame.time as GAME_TIME
+import Functions
 pygame.init()
 low_speed = 5
-medium_speed = 7
-fast_speed = 9
-small_size = 5
-medium_size = 7
-big_size = 9
+medium_speed = 6.25
+fast_speed = 7.5
+small_size = 40
+medium_size = 50
+big_size = 60
 AttackRange = 5
-small_area_of_effect = 5
-medium_area_of_effect = 7
-large_area_of_effect = 9
+small_area_of_effect = 40
+medium_area_of_effect = 50
+large_area_of_effect = 60
+enemy_card_list = []
+enemy_building_list = []
+
 window = pygame.display.set_mode((800,800))
+enemy_list = [True,True,True]
+
 class Card:
     '''Doc for Card class'''
     def __init__(self,MaxHealth,Speed,AttackDamage,Type,TargetType,AttackRange,AttackInterval,AreaOfEffect,Size):
+        self.x = None
+        self.y = None
         self.max_health = MaxHealth
         self.hp = MaxHealth
         self.speed = Speed
@@ -41,7 +49,8 @@ class Card:
                 if self.y - self.speed // 2 >= destination[1]:
                     self.y -= self.speed
         '''
-
+    def show(self,window):
+        window.blit(self.image,(self.x,self.y))
 
 class Barbarian(Card):
     '''Doc for Barbarian'''
@@ -51,6 +60,7 @@ class Barbarian(Card):
         self.y = Y
         self.elixir_cost = 2
         self.image = pygame.image.load('Barrel.png')
+
 class Archer(Card):
     '''Doc for Archer'''
     def __init__(self,X,Y):
@@ -58,6 +68,7 @@ class Archer(Card):
         self.x = X
         self.y = Y
         self.elixir_cost = 2
+
 class Giant(Card):
     '''Doc for Giant'''
     def __init__(self, X, Y, ElixirCost):
@@ -103,12 +114,19 @@ class Miner(Card):
         self.elixir_cost = 3
 
 
-b = Barbarian(100,200)
-a = Archer(200,100)
-print(b.image)
-i = 0
-while True:
-    i += 1
-    window.fill((0,0,0))
-    window.blit(b.image,(0,i))
-    pygame.display.update()
+class Building:
+    '''Doc for Building'''
+    def __init__(self,X,Y,MaxHealth,AttackDamage,AttackRange,AttackInterval,AreaOfEffect,Address):
+        self.x = X
+        self.y = Y
+        self.max_health = MaxHealth
+        self.current_health = MaxHealth
+        self.attack_damage = AttackDamage
+        self.attack_range = AttackRange
+        self.attack_interval = AttackInterval
+        self.area_of_effect = AreaOfEffect
+        self.image = pygame.image.load(Address)
+
+    def show(self,window):
+           window.blit(self.image,(self.x,self.y))
+
