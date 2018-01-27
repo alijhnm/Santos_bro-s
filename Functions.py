@@ -2,68 +2,52 @@ import pygame,sys,time
 import pygame.locals as GAME_GLOBALS
 import pygame.event as GAME_EVENTS
 import pygame.time as GAME_TIME
-#Constants
-mousePosition = None
-mousePressed = False
-window_size = 800
-obstacle_width = 80
-path_width = 100
+import Classes,Constants
 
 #Decide for player
-def move_decide_self(object,list):
-    print('Deciding!',object.x,object.y,list)
-    if list[0] and object.x < 20 :
+
+def move_decide_self(object):
+    '''Doc for move_decide_self'''
+    if object.x + object.size < Constants.path_width :
         move_up(object)
-        print('1')
         return None
-    if list[0] and window_size // 2 >= object.x >= 20 and object.y - object.speed > window_size//2 + obstacle_width // 2 :
+    if Constants.window_size // 2 >= object.x >= 0 and object.y - object.speed // 2 > Constants.window_size//2 + Constants.obstacle_width // 2 :
         move_upleft(object)
-        print('2')
         return None
-    if list[0] and window_size // 2 >= object.x >= 20 and object.y - object.speed <= window_size//2 + obstacle_width // 2:
+    if Constants.window_size // 2 >= object.x  >= Constants.path_width - object.size and object.y - object.speed <= Constants. window_size // 2 + Constants.obstacle_width // 2:
         move_left(object)
-        print('3')
         return None
-    if list[2] and object.x > window_size - path_width :
+    if object.x > Constants.window_size - Constants.path_width :
         move_up(object)
-        print('4')
         return None
-    if list[2] and 400 < object.x <= 750 and object.y - object.speed > window_size//2 + obstacle_width // 2:
+    if Constants.window_size // 2  < object.x + object.size // 2 <= Constants.window_size - object.size // 2 and object.y - object.speed // 2 > Constants.window_size//2 + Constants.obstacle_width // 2:
         move_upright(object)
-        print('5')
         return None
-    if list[0] and window_size // 2 < object.x <= window_size - path_width and object.y - object.speed <= window_size//2 + obstacle_width // 2:
+    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y - object.speed <= Constants.window_size//2 + Constants.obstacle_width // 2:
         move_right(object)
-        print('6')
         return None
 
 #Decide for AI
-def move_decide_ai(object,list):
+
+def move_decide_ai(object):
     '''Doc for move_decide_ai'''
-    print('Deciding!', object.x, object.y, list)
-    if list[0] and object.x < 20 :
+    if object.x  < Constants.path_width - object.size :
         move_down(object)
-        print('1')
         return None
-    if list[0] and window_size // 2 >= object.x >= 20 and object.y + object.speed + object.size < window_size//2 - obstacle_width // 2 :
+    if Constants.window_size // 2 >= object.x >= 20 and object.y + object.speed // 2 + object.size < Constants.window_size // 2 - Constants.obstacle_width // 2 :
         move_downleft(object)
-        print('2')
         return None
-    if list[0] and window_size // 2 >= object.x >= 20 and object.y + object.speed <= window_size//2 - obstacle_width // 2:
+    if Constants.window_size // 2 >= object.x >= Constants.path_width - object.size and object.y + object.speed <= Constants.window_size//2 - Constants.obstacle_width // 2:
         move_left(object)
-        print('3')
         return None
-    if list[2] and object.x > window_size - path_width:
+    if object.x > Constants.window_size - Constants.path_width:
         move_down(object)
-        print('4')
         return None
-    if list[2] and window_size // 2 < object.x <= window_size - path_width and object.y + object.speed + object.size < window_size//2 - obstacle_width // 2:
+    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y + object.speed // 2 + object.size < Constants.window_size//2 - Constants.obstacle_width // 2:
         move_downright(object)
-        print('5')
         return None
-    if list[0] and window_size // 2 < object.x <= window_size - path_width and object.y + object.speed <= window_size//2 - obstacle_width // 2:
+    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y + object.speed <= Constants.window_size//2 - Constants.obstacle_width // 2:
         move_right(object)
-        print('6')
         return None
 
 #Move Functions
@@ -119,3 +103,33 @@ def check_events():
                 rightDown = False
             if event.type == GAME_GLOBALS.QUIT:
                 quitGame()
+
+def make_troop(x,y,type,team_list):
+    tmp = 'Classes.' + type + str((x,y))
+    built_troop = eval(tmp)
+    team_list.append(built_troop)
+
+def check_attack(object,enemy_troop_list,enemy_building_list,window,time):
+    '''Doc for check_attack'''
+    if object.attack_range == 'Melee':
+        attack_range = object.size
+    else:
+        attack_range = object.attack_range
+    for obj in enemy_troop_list:
+        if object.target is not None:
+            attack_target(object,window,enemy_troop_list,time)
+        elif (obj.x + obj.size - object.x - object.size)**2 + (obj.y + obj.size - object.y - object.size)**2 < attack_range ** 2 :
+            object.target = obj
+    if object.target is None:
+        for obj in enemy_building_list:
+            if (obj.x + obj.size - object.x - object.size)**2 + (obj.y + obj.size - object.y - object.size)**2 < attack_range**2 :
+                object.target(obj)
+
+def attack_target(object,window,enemy_team,time):
+    if object.attack_range == 'Melee':
+        attack_range = object.size
+    else:
+        attack_range = object.attack_range
+    if (object.target.x + object.target.size - object.x - object.size)**2 + (object.target.y + object.target.size - object.y - object.size)**2 < attack_range ** 2:
+        object.attack(time,window,enemy_team)
+
