@@ -1,4 +1,13 @@
+import  pygame
 window_size = 800
+windowWidth = 1000
+windowHeight = 800
+mousePressed = False
+mousePosition = None
+cardsSize = 120
+cards=[{"image" : pygame.image.load('barbarcard11.png'),"position":[880,290],"id":0},{"image":pygame.image.load('Giantcard2.png'),"position":[880,412],"id":1},{"image":pygame.image.load('hogcard3.png'),"position":[880,534],"id":2},{"image":pygame.image.load('Archercard44.png'),"position":[880,656],"id":3}]
+draggingCard = [False,None]
+tmp_mouse=None
 obstacle_width = 40
 path_width = 100
 game_start_time = 0

@@ -11,19 +11,19 @@ def move_decide_self(object):
     if object.x + object.size < Constants.path_width :
         move_up(object)
         return None
-    if Constants.window_size // 2 >= object.x >= 0 and object.y - object.speed // 2 > Constants.window_size//2 + Constants.obstacle_width // 2 :
+    if Constants.windowHeight // 2 >= object.x >= 0 and object.y - object.speed // 2 > Constants.windowHeight//2 + Constants.obstacle_width // 2 :
         move_upleft(object)
         return None
-    if Constants.window_size // 2 >= object.x  >= Constants.path_width - object.size and object.y - object.speed <= Constants. window_size // 2 + Constants.obstacle_width // 2:
+    if Constants.windowHeight // 2 >= object.x  >= Constants.path_width - object.size and object.y - object.speed <= Constants. windowHeight // 2 + Constants.obstacle_width // 2:
         move_left(object)
         return None
     if object.x > Constants.window_size - Constants.path_width :
         move_up(object)
         return None
-    if Constants.window_size // 2  < object.x + object.size // 2 <= Constants.window_size - object.size // 2 and object.y - object.speed // 2 > Constants.window_size//2 + Constants.obstacle_width // 2:
+    if Constants.windowHeight // 2  < object.x + object.size // 2 <= Constants.windowHeight - object.size // 2 and object.y - object.speed // 2 > Constants.windowHeight//2 + Constants.obstacle_width // 2:
         move_upright(object)
         return None
-    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y - object.speed <= Constants.window_size//2 + Constants.obstacle_width // 2:
+    if Constants.windowHeight // 2 < object.x <= Constants.windowHeight - Constants.path_width and object.y - object.speed <= Constants.windowHeight//2 + Constants.obstacle_width // 2:
         move_right(object)
         return None
 
@@ -34,19 +34,19 @@ def move_decide_ai(object):
     if object.x  < Constants.path_width - object.size :
         move_down(object)
         return None
-    if Constants.window_size // 2 >= object.x >= 20 and object.y + object.speed // 2 + object.size < Constants.window_size // 2 - Constants.obstacle_width // 2 :
+    if Constants.windowHeight // 2 >= object.x >= 20 and object.y + object.speed // 2 + object.size < Constants.windowHeight // 2 - Constants.obstacle_width // 2 :
         move_downleft(object)
         return None
-    if Constants.window_size // 2 >= object.x >= Constants.path_width - object.size and object.y + object.speed <= Constants.window_size//2 - Constants.obstacle_width // 2:
+    if Constants.windowHeight // 2 >= object.x >= Constants.path_width - object.size and object.y + object.speed <= Constants.windowHeight//2 - Constants.obstacle_width // 2:
         move_left(object)
         return None
     if object.x > Constants.window_size - Constants.path_width:
         move_down(object)
         return None
-    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y + object.speed // 2 + object.size < Constants.window_size//2 - Constants.obstacle_width // 2:
+    if Constants.windowHeight // 2 < object.x <= Constants.windowHeight - Constants.path_width and object.y + object.speed // 2 + object.size < Constants.windowHeight//2 - Constants.obstacle_width // 2:
         move_downright(object)
         return None
-    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y + object.speed <= Constants.window_size//2 - Constants.obstacle_width // 2:
+    if Constants.windowHeight // 2 < object.x <= Constants.windowHeight - Constants.path_width and object.y + object.speed <= Constants.windowHeight//2 - Constants.obstacle_width // 2:
         move_right(object)
         return None
 
@@ -133,3 +133,34 @@ def attack_target(object,window,enemy_team,time):
     if (object.target.x + object.target.size - object.x - object.size)**2 + (object.target.y + object.target.size - object.y - object.size)**2 < attack_range ** 2:
         object.attack(time,window,enemy_team)
 
+def CheckBounds():
+    global cards,draggingCard,tmp_mouse
+
+    if Constants.mousePressed == True:
+        #is our cursor over the square?
+        for card in cards:
+                if Constants.mousePosition[0] > card["position"][0] and Constants.mousePosition[0] < card["position"][0] + Constants.cardsSize:
+
+                    if Constants.mousePosition[1] > card["position"][1] and Constants.mousePosition[1] < card["position"][1] + Constants.cardsSize:
+
+                        draggingCard[0] = True
+                        draggingCard[1] = card["id"]
+
+    if draggingCard[0] == True and Constants.mousePressed == False:
+        draggingCard[0] = False
+        tmp_mouse=(Constants.mousePosition[0],Constants.mousePosition[1])
+    print(tmp_mouse)
+
+
+def drawCard(window):
+    global cards,draggingCard
+    tmp = [Constants.mousePosition[0],Constants.mousePosition[1]]
+    for card in cards:
+        if tmp[1] < 400:
+            tmp[1] = 400
+        #if card["id"] == i:
+        if draggingCard[0] == True and draggingCard[1] == card["id"]:
+            window.blit(card["image"],(tmp[0] - Constants.cardsSize / 2,tmp[1] - Constants.cardsSize / 2))
+
+    for card in cards:
+        window.blit(card["image"],card["position"])

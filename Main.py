@@ -3,7 +3,7 @@ import pygame.locals as GAME_GLOBALS
 import pygame.event as GAME_EVENTS
 import pygame.time as GAME_TIME
 import Functions,Classes,Constants
-window = pygame.display.set_mode((Constants.window_size,Constants.window_size))
+window = pygame.display.set_mode((Constants.windowWidth,Constants.windowHeight))
 Functions.make_troop(100,600,'Barbarian',Constants.player_troop_list)
 Functions.make_troop(300,300,'Barbarian',Constants.AI_troop_list)
 king_tower_enemy = Classes.Building(50,50,3000,100,200,1,0,'king1.png')
@@ -13,7 +13,7 @@ Constants.AI_building_list.append(king_tower_enemy)
 while True:
     Functions.check_events()
     window.fill((0,0,0))
-    pygame.draw.rect(window,(255,255,255),(Constants.path_width,Constants.window_size//2 - Constants.obstacle_width//2,Constants.window_size - 2 * Constants.path_width,Constants.obstacle_width))
+    pygame.draw.rect(window,(255,255,255),(Constants.path_width,Constants.windowHeight//2 - Constants.obstacle_width//2,Constants.window_size - 2 * Constants.path_width,Constants.obstacle_width))
     for self_troop in Constants.player_troop_list:
         Functions.check_attack(self_troop,Constants.AI_troop_list,Constants.AI_building_list,window,GAME_TIME.get_ticks())
         if self_troop.target is None:
