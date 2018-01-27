@@ -12,7 +12,14 @@ Constants.player_building_list.append(king_tower_player)
 Constants.AI_building_list.append(king_tower_enemy)
 while True:
     Functions.check_events()
+    Constants.mousePosition = pygame.mouse.get_pos()
     window.fill((0,0,0))
+    if pygame.mouse.get_pressed()[0] == True:
+        Constants.mousePressed = True
+    else:
+        Constants.mousePressed = False
+    Functions.CheckBounds()
+    Functions.drawCard(window)
     pygame.draw.rect(window,(255,255,255),(Constants.path_width,Constants.windowHeight//2 - Constants.obstacle_width//2,Constants.window_size - 2 * Constants.path_width,Constants.obstacle_width))
     for self_troop in Constants.player_troop_list:
         Functions.check_attack(self_troop,Constants.AI_troop_list,Constants.AI_building_list,window,GAME_TIME.get_ticks())

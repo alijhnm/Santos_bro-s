@@ -135,32 +135,35 @@ def attack_target(object,window,enemy_team,time):
 
 def CheckBounds():
     global cards,draggingCard,tmp_mouse
-
     if Constants.mousePressed == True:
         #is our cursor over the square?
-        for card in cards:
+        for card in Constants.cards:
                 if Constants.mousePosition[0] > card["position"][0] and Constants.mousePosition[0] < card["position"][0] + Constants.cardsSize:
-
                     if Constants.mousePosition[1] > card["position"][1] and Constants.mousePosition[1] < card["position"][1] + Constants.cardsSize:
+                       Constants.draggingCard[0] = True
+                       Constants.draggingCard[1] = card["id"]
+    if Constants.draggingCard[0] == True and Constants.mousePressed == False:
 
-                        draggingCard[0] = True
-                        draggingCard[1] = card["id"]
-
-    if draggingCard[0] == True and Constants.mousePressed == False:
-        draggingCard[0] = False
-        tmp_mouse=(Constants.mousePosition[0],Constants.mousePosition[1])
-    print(tmp_mouse)
-
+        Constants.tmp_mouse=(Constants.mousePosition[0],Constants.mousePosition[1])
+    #return Constants.tmp_mouse
 
 def drawCard(window):
-    global cards,draggingCard
     tmp = [Constants.mousePosition[0],Constants.mousePosition[1]]
-    for card in cards:
+    for card in Constants.cards:
         if tmp[1] < 400:
             tmp[1] = 400
         #if card["id"] == i:
-        if draggingCard[0] == True and draggingCard[1] == card["id"]:
+        if Constants.draggingCard[0] == True and Constants.draggingCard[1] == card["id"]:
+            print("hjgh")
             window.blit(card["image"],(tmp[0] - Constants.cardsSize / 2,tmp[1] - Constants.cardsSize / 2))
-
-    for card in cards:
+            if Constants.draggingCard[0] == True:
+                print("hshbh")
+                if pygame.mouse.get_pressed()[0]== False:
+                    print("kir")
+                    print(card["type"])
+                    make_troop(tmp[0],tmp[1],card["type"],Constants.player_troop_list)
+                    Constants.draggingCard[0] = False
+    for card in Constants.cards:
         window.blit(card["image"],card["position"])
+#def make_Troops(window):
+
