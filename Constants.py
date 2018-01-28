@@ -1,11 +1,14 @@
 import pygame
+Troop_list=[]
 window_size = 800
 window_width = 920
 window_height = 800
+all_Cards =[{"image" : pygame.image.load('PEKKA-card.png'),"position":[0,0],"type":'PEKKA',"id":0},{"image":pygame.image.load('Giant-card.png'),"position":[120,0],"type":'Giant',"id":1},{"image":pygame.image.load('Hog-card.png'),"position":[240,0],"type":'Hog',"id":2},{"image":pygame.image.load('Archer-card.png'),"position":[360,0],"type":'Archer',"id":3},{"image":pygame.image.load('Barbarian-card.png'),"position":[480,0],"type":'Barbarian',"id":4},{"image":pygame.image.load('Ballon-card.png'),"position":[600,0],"type":'Ballon',"id":5},{"image":pygame.image.load('Dragon-card.png'),"position":[720,0],"type":'Dragon',"id":6}]
 mousePressed = False
 mousePosition = None
 cardsSize = 120
-cards=[{"image" : pygame.image.load('barbarcard11.png'),"position":[800,290],"id":0,"type":'Barbarian'},{"image":pygame.image.load('Giantcard2.png'),"position":[800,412],"id":1,"type":'Giant'},{"image":pygame.image.load('hogcard3.png'),"position":[800,534],"id":2,"type":'Hog'},{"image":pygame.image.load('Archercard44.png'),"position":[800,656],"id":3,"type":'Archer'}]
+tmp_mokhtasat=[(100,25),(250,25),(400,25),(100,175),(250,175),(400,175),(250,325)]
+cards=[{"image" : pygame.image.load('PEKKA-card.png'),"position":[800,290],"id":0,"type":'PEKKA'},{"image":pygame.image.load('Giant-card.png'),"position":[800,412],"id":1,"type":'Giant'},{"image":pygame.image.load('Hog-card.png'),"position":[800,534],"id":2,"type":'Hog'},{"image":pygame.image.load('Archer-card.png'),"position":[800,656],"id":3,"type":'Archer'}]
 draggingCard = [False,None]
 tmp_mouse=None
 obstacle_width = 40
@@ -30,3 +33,7 @@ hp_bar_width = 10
 elixir_count = 3
 last_elixir = 0
 elixir_costs = {'Barbarian':2,'Archer':2,'Giant':5,'Hog':4,'PEKKA':7,'Dragon':4,'Ballon':5}
+Game_Started = False
+Game_Ended = False
+Game_Pause = False
+i = 0

@@ -145,36 +145,58 @@ def attack_target(object,window,enemy_troop_list,enemy_building_list,time):
         object.attack(time,window,enemy_troop_list,enemy_building_list)
 
 def CheckBounds():
-    global cards,draggingCard,tmp_mouse
+    global draggingCard,tmp_mouse
     if Constants.mousePressed == True:
-        for card in Constants.cards:
+        for card in Constants.Troop_list:
             if Constants.mousePosition[0] > card["position"][0] and Constants.mousePosition[0] < card["position"][0] + Constants.cardsSize:
                 if Constants.mousePosition[1] > card["position"][1] and Constants.mousePosition[1] < card["position"][1] + Constants.cardsSize:
                    Constants.draggingCard[0] = True
                    Constants.draggingCard[1] = card["id"]
     if Constants.draggingCard[0] == True and Constants.mousePressed == False:
-
         Constants.tmp_mouse=(Constants.mousePosition[0],Constants.mousePosition[1])
 
 def drawCard(window):
     tmp = [Constants.mousePosition[0],Constants.mousePosition[1]]
-    for card in Constants.cards:
+    for card in Constants.Troop_list:
         if tmp[1] < 400:
             tmp[1] = 400
         if tmp[0] > 700:
             tmp[0] = 700
         if Constants.draggingCard[0] == True and Constants.draggingCard[1] == card["id"]:
-            print("hjgh")
             window.blit(card["image"],(tmp[0] - Constants.cardsSize / 2,tmp[1] - Constants.cardsSize / 2))
             if Constants.draggingCard[0] == True:
-                print("hshbh")
                 if pygame.mouse.get_pressed()[0]== False:
-                    print("kir")
-                    print(card["type"])
                     if Constants.elixir_costs[card['type']] <= Constants.elixir_count:
                         make_troop(tmp[0],tmp[1],card["type"],Constants.player_troop_list)
                         Constants.draggingCard[0] = False
                         Constants.elixir_count -= Constants.elixir_costs[card['type']]
     for card in Constants.cards:
         window.blit(card["image"],card["position"])
+
+def Show_Menu(window,i):
+    for card in Constants.all_Cards:
+        window.blit(card["image"],card["position"])
+    j = 0
+    for card in Constants.Troop_list:
+        window.blit(card['image'],Constants.tmp_mokhtasat[j])
+        j += 1
+    if pygame.mouse.get_pressed()[0] == 1:
+        if len(Constants.Troop_list) < 4:
+            for card in Constants.all_Cards:
+                if Constants.mousePosition[0] > card["position"][0] and Constants.mousePosition[0] < card["position"][0] + Constants.cardsSize:
+                    if Constants.mousePosition[1] > card["position"][1] and Constants.mousePosition[1] < card["position"][1] + Constants.cardsSize:
+                        if Constants.all_Cards[card['id']] not in Constants.Troop_list:
+                            window.blit(card["image"],Constants.tmp_mokhtasat[i])
+                            print('Done')
+                            i += 1
+                            Constants.Troop_list.append(Constants.all_Cards[card["id"]])
+        else:
+            Constants.Game_Started = True
+    for card in Constants.Troop_list:
+        window.blit(card['image'],card['position'])
+
+
+
+
+
 
