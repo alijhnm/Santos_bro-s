@@ -5,9 +5,10 @@ import pygame.time as GAME_TIME
 import Classes,Constants
 
 #Decide for player
-
 def move_decide_self(object,enemy_building_list):
-    '''Doc for move_decide_self'''
+    '''This function makes desicion for movement of a card in player team based on its current position in the game and the enemy team buildings.\
+    Takes an object of player team and the entire enemy building list as input arguments and changes the position of the object.\
+    The None returned after each change in position is essential for preventing one object from making multiple desicions in one turn.'''
     if not enemy_building_list[0] and enemy_building_list[1] and object.y < 110 and object.x <= Constants.window_height//2:
         move_right(object)
         return None
@@ -36,7 +37,7 @@ def move_decide_self(object,enemy_building_list):
 #Decide for AI
 
 def move_decide_ai(object,player_building_list):
-    '''Doc for move_decide_ai'''
+    '''Works just like the move_decide_player but because of difference in placement of teams has different if statements'''
     if not player_building_list[0] and player_building_list[1] and object.y > 690 and object.x <= Constants.window_height//2:
         move_right(object)
         return None
@@ -63,7 +64,8 @@ def move_decide_ai(object,player_building_list):
         return None
 
 #Move Functions
-
+#For better abstraction we have implemented this simple move functions so that reading the code becomes easy
+#This functions simply do what their name is.They modify an objects x and y so that is shown in a different position next frame
 def move_up(object):
     object.y -= object.speed
 
@@ -95,10 +97,13 @@ def move_downleft(object):
 # Misc Functions
 
 def quitGame():
+    '''Quits the game properly'''
     pygame.quit()
     sys.exit()
 
 def check_events():
+    '''This function is used to get the events that are passed into compuyer by consumer.It is always called at the start of the mainloop.\
+    It needs no input arguments because we dont need to change anyrhing;Instead,we want to understand the changes by using pygame'''
     global GAME_EVENTS,leftDown,rightDown,gameStarted
     for event in GAME_EVENTS.get():
         if event.type == GAME_GLOBALS.QUIT:
@@ -111,6 +116,8 @@ def check_events():
                     Constants.game_paused = True
 
 def make_troop(x,y,type,team_list):
+    '''Takes a coordinate,a type and a list and makes a troop at given coordinate with given type and addes the troop to given\
+    list,be it player or AI troop list'''
     if team_list == Constants.AI_troop_list:
         color = (255,0,0)
     else:
@@ -120,18 +127,21 @@ def make_troop(x,y,type,team_list):
     team_list.append(built_troop)
 
 def check_attack(object,enemy_troop_list,enemy_building_list,window,time):
-    '''Doc for check_attack'''
-    if object.attack_range == 'Melee':
+    '''Checks an objects target.If it has one,the object will attack the target.Otherwise,checks if their is any enemy\
+    troop or building in the given objects attack range or not.If there is any,This function will set the objects target\
+    to the enemy troop or building found.It also gets the games window and its time as input arguments because they are\
+    needed for attack_target function to function correctly'''
+    if object.attack_range == 'Melee': #If given objects attack range is melee,it means that it can attack another object right next to it
         attack_range = object.size
     else:
         attack_range = object.attack_range
-    if object.target is not None:
+    if object.target is not None: #If objects target gets out of its attack range its target attribute must be set to None
         if (object.target.x + object.target.size // 2 - object.x - object.size // 2) ** 2 + (
                 object.target.y + object.target.size // 2 - object.y - object.size // 2) ** 2 > attack_range ** 2:
             object.target = None
     if object.target is not None:
         attack_target(object, window, enemy_troop_list,enemy_building_list, time)
-    if object.target is None:
+    if object.target is None: #Check if any of enemy troops is in objects attack range
         for obj in enemy_troop_list:
             if type(obj) != bool:
                 if (obj.x + obj.size//2 - object.x - object.size//2)**2 + (obj.y + obj.size//2 - object.y - object.size//2)**2 <= attack_range ** 2 :
@@ -139,14 +149,15 @@ def check_attack(object,enemy_troop_list,enemy_building_list,window,time):
                         object.target = obj
                     elif (object.target_type == 'Ground' and obj.type == 'Ground') or object.target_type == 'Air $ Ground': #or (type(object) != Classes.Ballon and type(object) != Classes.Giant and type(object) != Classes.Hog)
                         object.target = obj
-    if object.target is None:
+    if object.target is None: #Check if any of enemy buildings is in objects attack range
         for obj in enemy_building_list:
             if type(obj) != bool:
                 if (obj.x + obj.size//2 - object.x - object.size//2)**2 + (obj.y + obj.size//2 - object.y - object.size//2)**2 <= attack_range**2 :
                     object.target = obj
 
 def attack_target(object,window,enemy_troop_list,enemy_building_list,time):
-    if object.attack_range == 'Melee':
+    '''Takes an object,games window,games time and enemy building and troop lists as input arguments and calls the attack method of object.'''
+    if object.attack_range == 'Melee': #Same statement as the one in check_attack function
         attack_range = object.size
     else:
         attack_range = object.attack_range
@@ -154,6 +165,8 @@ def attack_target(object,window,enemy_troop_list,enemy_building_list,time):
         object.attack(time,window,enemy_troop_list,enemy_building_list)
 
 def CheckBounds():
+    '''Checks the outer limits of cards shown at right of the game screen and if the mouse is pressed on them,\
+    it will set that cards draggindcard parameter True'''
     global cards,draggingCard,tmp_mouse
     if Constants.mousePressed == True:
         for card in Constants.game_cards:
@@ -165,6 +178,9 @@ def CheckBounds():
         Constants.tmp_mouse=(Constants.mousePosition[0],Constants.mousePosition[1])
 
 def drawCard(window):
+    '''Draws  cards that are at the right of the screen in the game and the card which is being dragged(if any) on the \
+     surface of the game.if mouse is released it will call the make_troop function and make a troop at the position of \
+     the dragging card.'''
     tmp = [Constants.mousePosition[0],Constants.mousePosition[1]]
     for card in Constants.game_cards:
         if tmp[1] < 400:
@@ -183,6 +199,7 @@ def drawCard(window):
         window.blit(card["image"],card["position"])
 
 def Show_menu(window,i,game_started):
+    '''Handles the first screen of the game which is menu screen and that is the screen that you choose your game cards.'''
     window.blit(Constants.menu_image,(0,0))
     for card in Constants.all_Cards:
         window.blit(card["image"],card["position"])
@@ -200,6 +217,7 @@ def Show_menu(window,i,game_started):
                         Constants.game_cards.append(Constants.all_Cards[card["id"]])
 
 def check_result(player_building_list,AI_building_list):
+    '''Checks if the game is finished or not.Return the result of the game if it is finished(win or lose);False otherwise'''
     result = False
     if not player_building_list[1]:
         result = 'Lose'
@@ -208,6 +226,8 @@ def check_result(player_building_list,AI_building_list):
     return result
 
 def pause_game(window):
+    '''Pauses the game and enters a while loop which will terminate if escape button is pressed.The information of escape \
+    button is updated with check_events function in each loop'''
     while Constants.game_paused:
         check_events()
 

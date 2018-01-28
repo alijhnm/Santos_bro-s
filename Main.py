@@ -3,20 +3,29 @@ import pygame.locals as GAME_GLOBALS
 import pygame.event as GAME_EVENTS
 import pygame.time as GAME_TIME
 import Functions,Classes,Constants
+
+#Making the games window
+
 window = pygame.display.set_mode((Constants.window_width,Constants.window_height))
+
+#Making buildings of the game
+
 queentower_left_enemy = Classes.Building(50,50,3000,100,200,500,0,'QueenTower_AI.png',(255,0,0))
 queentower_right_enemy = Classes.Building(650,50,3000,100,200,500,0,'QueenTower_AI.png',(255,0,0))
 kingtower_AI = Classes.Building(350,50,3000,100,200,1000,0,'KingTower_AI.png',(255,0,0))
 kingtower_player = Classes.Building(350,650,3000,100,200,1000,0,'KingTower.png',(0,0,255))
 queentower_left_player = Classes.Building(50,650,3000,100,200,500,0,'QueenTower.png',(0,0,255))
 queentower_right_player = Classes.Building(650,650,3000,100,200,500,0,'QueenTower.png',(0,0,255))
+
 Constants.player_building_list.append(queentower_left_player)
 Constants.player_building_list.append(kingtower_player)
 Constants.player_building_list.append(queentower_right_player)
 Constants.AI_building_list.append(queentower_left_enemy)
 Constants.AI_building_list.append(kingtower_AI)
 Constants.AI_building_list.append(queentower_right_enemy)
-map = pygame.image.load('Map.png')
+
+#Main loop
+
 while True:
     Functions.check_events()
     Constants.mousePosition = pygame.mouse.get_pos()
@@ -26,9 +35,9 @@ while True:
             Constants.game_cards[card_number]['position'] = Constants.game_coordinates[card_number]
     if Constants.game_started == True and Constants.game_finished == True:
         if not Constants.AI_building_list[1]:
-            window.blit(Constants.lose_image,(0,0))
-        else:
             window.blit(Constants.win_image,(0,0))
+        else:
+            window.blit(Constants.lose_image,(0,0))
     if (not Constants.game_started) and (not Constants.game_finished):
         Functions.Show_menu(window,Constants.i,Constants.game_started)
     if Constants.game_started == True and Constants.game_finished == False:
@@ -39,7 +48,7 @@ while True:
                 Functions.pause_game(window)
             else:
                 window.fill((0, 0, 0))
-                window.blit(map,(0,0))
+                window.blit(Constants.map,(0,0))
                 if GAME_TIME.get_ticks() - Constants.last_elixir_player > Constants.elixir_interval and Constants.elixir_count_player < 10:
                     Constants.elixir_count_player += 1
                     Constants.last_elixir_player = GAME_TIME.get_ticks()
