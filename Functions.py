@@ -6,47 +6,67 @@ import Classes,Constants
 
 #Decide for player
 
-def move_decide_self(object):
+def move_decide_self(object,enemy_building_list):
     '''Doc for move_decide_self'''
-    if object.x + object.size < Constants.path_width :
-        move_up(object)
+    if not enemy_building_list[0] and enemy_building_list[1] and object.y < 110 and object.x <= Constants.window_height//2:
+        print('7')
+        move_right(object)
         return None
-    if Constants.window_size // 2 >= object.x >= 0 and object.y - object.speed // 2 > Constants.window_size//2 + Constants.obstacle_width // 2 :
-        move_upleft(object)
-        return None
-    if Constants.window_size // 2 >= object.x  >= Constants.path_width - object.size and object.y - object.speed <= Constants. window_size // 2 + Constants.obstacle_width // 2:
+    if not enemy_building_list[2] and enemy_building_list[1] and object.y < 110 and object.x > Constants.window_height//2:
+        print('8')
         move_left(object)
         return None
-    if object.x > Constants.window_size - Constants.path_width :
+    if (enemy_building_list[0] or (not enemy_building_list[0] and enemy_building_list[1]))  and object.x + object.size < Constants.path_width and object.y > 100:
+        print('1')
         move_up(object)
         return None
-    if Constants.window_size // 2  < object.x + object.size // 2 <= Constants.window_size - object.size // 2 and object.y - object.speed // 2 > Constants.window_size//2 + Constants.obstacle_width // 2:
+    if (enemy_building_list[0] or (not enemy_building_list[0] and enemy_building_list[1])) and Constants.window_height // 2 >= object.x >= 0 and object.y - object.speed // 2 > Constants.window_height//2 + Constants.obstacle_width // 2 :
+        print('2')
+        move_upleft(object)
+        return None
+    if (enemy_building_list[0] or (not enemy_building_list[0] and enemy_building_list[1])) and Constants.window_height // 2 >= object.x  >= Constants.path_width - object.size and object.y - object.speed <= Constants. window_height // 2 + Constants.obstacle_width // 2:
+        print('3')
+        move_left(object)
+        return None
+    if (enemy_building_list[2] or (not enemy_building_list[2] and enemy_building_list[1])) and object.x > Constants.window_height - Constants.path_width and object.y > 100:
+        print('4')
+        move_up(object)
+        return None
+    if (enemy_building_list[2] or (not enemy_building_list[2] and enemy_building_list[1])) and Constants.window_height // 2  < object.x + object.size // 2 <= Constants.window_height - object.size // 2 and object.y - object.speed // 2 > Constants.window_height//2 + Constants.obstacle_width // 2:
+        print('5')
         move_upright(object)
         return None
-    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y - object.speed <= Constants.window_size//2 + Constants.obstacle_width // 2:
+    if (enemy_building_list[2] or (not enemy_building_list[2] and enemy_building_list[1])) and Constants.window_height // 2 < object.x <= Constants.window_height - Constants.path_width and object.y - object.speed <= Constants.window_height//2 + Constants.obstacle_width // 2:
+        print('6')
         move_right(object)
         return None
 
 #Decide for AI
 
-def move_decide_ai(object):
+def move_decide_ai(object,player_building_list):
     '''Doc for move_decide_ai'''
-    if object.x  < Constants.path_width - object.size :
-        move_down(object)
+    if not player_building_list[0] and player_building_list[1] and object.y > 690 and object.x <= Constants.window_height//2:
+        move_right(object)
         return None
-    if Constants.window_size // 2 >= object.x >= 20 and object.y + object.speed // 2 + object.size < Constants.window_size // 2 - Constants.obstacle_width // 2 :
-        move_downleft(object)
-        return None
-    if Constants.window_size // 2 >= object.x >= Constants.path_width - object.size and object.y + object.speed <= Constants.window_size//2 - Constants.obstacle_width // 2:
+    if not player_building_list[2] and player_building_list[1] and object.y > 690 and object.x > Constants.window_height//2:
         move_left(object)
         return None
-    if object.x > Constants.window_size - Constants.path_width:
+    if (player_building_list[0] or (not player_building_list[0] and player_building_list[1])) and object.x  < Constants.path_width - object.size :
         move_down(object)
         return None
-    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y + object.speed // 2 + object.size < Constants.window_size//2 - Constants.obstacle_width // 2:
+    if (player_building_list[0] or (not player_building_list[0] and player_building_list[1])) and Constants.window_height // 2 >= object.x >= 20 and object.y + object.speed // 2 + object.size < Constants.window_height // 2 - Constants.obstacle_width // 2 :
+        move_downleft(object)
+        return None
+    if (player_building_list[0] or (not player_building_list[0] and player_building_list[1])) and Constants.window_height // 2 >= object.x >= Constants.path_width - object.size and object.y + object.speed <= Constants.window_height//2 - Constants.obstacle_width // 2:
+        move_left(object)
+        return None
+    if (player_building_list[2] or (not player_building_list[2] and player_building_list[1])) and object.x > Constants.window_height - Constants.path_width:
+        move_down(object)
+        return None
+    if (player_building_list[2] or (not player_building_list[2] and player_building_list[1])) and Constants.window_height // 2 < object.x <= Constants.window_height - Constants.path_width and object.y + object.speed // 2 + object.size < Constants.window_height//2 - Constants.obstacle_width // 2:
         move_downright(object)
         return None
-    if Constants.window_size // 2 < object.x <= Constants.window_size - Constants.path_width and object.y + object.speed <= Constants.window_size//2 - Constants.obstacle_width // 2:
+    if (player_building_list[2] or (not player_building_list[2] and player_building_list[1])) and Constants.window_height // 2 < object.x <= Constants.window_height - Constants.path_width and object.y + object.speed <= Constants.window_height//2 - Constants.obstacle_width // 2:
         move_right(object)
         return None
 
@@ -89,20 +109,8 @@ def quitGame():
 def check_events():
     global GAME_EVENTS,leftDown,rightDown,gameStarted
     for event in GAME_EVENTS.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                leftDown = True
-            if event.key == pygame.K_RIGHT:
-                rightDown = True
-            if event.key == pygame.K_ESCAPE:
-                quitGame()
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT:
-                leftDown = False
-            if event.key == pygame.K_RIGHT:
-                rightDown = False
-            if event.type == GAME_GLOBALS.QUIT:
-                quitGame()
+        if event.type == GAME_GLOBALS.QUIT:
+            quitGame()
 
 def make_troop(x,y,type,team_list):
     tmp = 'Classes.' + type + str((x,y))
@@ -115,21 +123,58 @@ def check_attack(object,enemy_troop_list,enemy_building_list,window,time):
         attack_range = object.size
     else:
         attack_range = object.attack_range
-    for obj in enemy_troop_list:
-        if object.target is not None:
-            attack_target(object,window,enemy_troop_list,time)
-        elif (obj.x + obj.size - object.x - object.size)**2 + (obj.y + obj.size - object.y - object.size)**2 < attack_range ** 2 :
-            object.target = obj
+    if object.target is not None:
+        attack_target(object, window, enemy_troop_list,enemy_building_list, time)
+    if object.target is None:
+        for obj in enemy_troop_list:
+            if type(obj) != bool:
+                if (obj.x + obj.size//2 - object.x - object.size//2)**2 + (obj.y + obj.size//2 - object.y - object.size//2)**2 < attack_range ** 2 :
+                    object.target = obj
     if object.target is None:
         for obj in enemy_building_list:
-            if (obj.x + obj.size - object.x - object.size)**2 + (obj.y + obj.size - object.y - object.size)**2 < attack_range**2 :
-                object.target(obj)
+            if type(obj) != bool:
+                if (obj.x + obj.size//2 - object.x - object.size//2)**2 + (obj.y + obj.size//2 - object.y - object.size//2)**2 < attack_range**2 :
+                    object.target = obj
 
-def attack_target(object,window,enemy_team,time):
+def attack_target(object,window,enemy_troop_list,enemy_building_list,time):
     if object.attack_range == 'Melee':
         attack_range = object.size
     else:
         attack_range = object.attack_range
-    if (object.target.x + object.target.size - object.x - object.size)**2 + (object.target.y + object.target.size - object.y - object.size)**2 < attack_range ** 2:
-        object.attack(time,window,enemy_team)
+    if (object.target.x + object.target.size//2 - object.x - object.size//2)**2 + (object.target.y + object.target.size//2 - object.y - object.size//2)**2 < attack_range ** 2:
+        object.attack(time,window,enemy_troop_list,enemy_building_list)
+
+def CheckBounds():
+    global cards,draggingCard,tmp_mouse
+    if Constants.mousePressed == True:
+        for card in Constants.cards:
+            if Constants.mousePosition[0] > card["position"][0] and Constants.mousePosition[0] < card["position"][0] + Constants.cardsSize:
+                if Constants.mousePosition[1] > card["position"][1] and Constants.mousePosition[1] < card["position"][1] + Constants.cardsSize:
+                   Constants.draggingCard[0] = True
+                   Constants.draggingCard[1] = card["id"]
+    if Constants.draggingCard[0] == True and Constants.mousePressed == False:
+
+        Constants.tmp_mouse=(Constants.mousePosition[0],Constants.mousePosition[1])
+
+def drawCard(window):
+    tmp = [Constants.mousePosition[0],Constants.mousePosition[1]]
+    for card in Constants.cards:
+        if tmp[1] < 400:
+            tmp[1] = 400
+        if tmp[0] > 700:
+            tmp[0] = 700
+        if Constants.draggingCard[0] == True and Constants.draggingCard[1] == card["id"]:
+            print("hjgh")
+            window.blit(card["image"],(tmp[0] - Constants.cardsSize / 2,tmp[1] - Constants.cardsSize / 2))
+            if Constants.draggingCard[0] == True:
+                print("hshbh")
+                if pygame.mouse.get_pressed()[0]== False:
+                    print("kir")
+                    print(card["type"])
+                    if Constants.elixir_costs[card['type']] <= Constants.elixir_count:
+                        make_troop(tmp[0],tmp[1],card["type"],Constants.player_troop_list)
+                        Constants.draggingCard[0] = False
+                        Constants.elixir_count -= Constants.elixir_costs[card['type']]
+    for card in Constants.cards:
+        window.blit(card["image"],card["position"])
 

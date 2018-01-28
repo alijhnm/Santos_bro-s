@@ -1,4 +1,13 @@
+import pygame
 window_size = 800
+window_width = 920
+window_height = 800
+mousePressed = False
+mousePosition = None
+cardsSize = 120
+cards=[{"image" : pygame.image.load('barbarcard11.png'),"position":[800,290],"id":0,"type":'Barbarian'},{"image":pygame.image.load('Giantcard2.png'),"position":[800,412],"id":1,"type":'Giant'},{"image":pygame.image.load('hogcard3.png'),"position":[800,534],"id":2,"type":'Hog'},{"image":pygame.image.load('Archercard44.png'),"position":[800,656],"id":3,"type":'Archer'}]
+draggingCard = [False,None]
+tmp_mouse=None
 obstacle_width = 40
 path_width = 100
 game_start_time = 0
@@ -18,3 +27,6 @@ player_troop_list = []
 player_building_list = []
 hp_bar_offset = 10
 hp_bar_width = 10
+elixir_count = 3
+last_elixir = 0
+elixir_costs = {'Barbarian':2,'Archer':2,'Giant':5,'Hog':4,'PEKKA':7,'Dragon':4,'Ballon':5}
