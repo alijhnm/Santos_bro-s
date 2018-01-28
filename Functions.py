@@ -9,35 +9,27 @@ import Classes,Constants
 def move_decide_self(object,enemy_building_list):
     '''Doc for move_decide_self'''
     if not enemy_building_list[0] and enemy_building_list[1] and object.y < 110 and object.x <= Constants.window_height//2:
-        print('7')
         move_right(object)
         return None
     if not enemy_building_list[2] and enemy_building_list[1] and object.y < 110 and object.x > Constants.window_height//2:
-        print('8')
         move_left(object)
         return None
     if (enemy_building_list[0] or (not enemy_building_list[0] and enemy_building_list[1]))  and object.x + object.size < Constants.path_width and object.y > 100:
-        print('1')
         move_up(object)
         return None
     if (enemy_building_list[0] or (not enemy_building_list[0] and enemy_building_list[1])) and Constants.window_height // 2 >= object.x >= 0 and object.y - object.speed // 2 > Constants.window_height//2 + Constants.obstacle_width // 2 :
-        print('2')
         move_upleft(object)
         return None
     if (enemy_building_list[0] or (not enemy_building_list[0] and enemy_building_list[1])) and Constants.window_height // 2 >= object.x  >= Constants.path_width - object.size and object.y - object.speed <= Constants. window_height // 2 + Constants.obstacle_width // 2:
-        print('3')
         move_left(object)
         return None
     if (enemy_building_list[2] or (not enemy_building_list[2] and enemy_building_list[1])) and object.x > Constants.window_height - Constants.path_width and object.y > 100:
-        print('4')
         move_up(object)
         return None
     if (enemy_building_list[2] or (not enemy_building_list[2] and enemy_building_list[1])) and Constants.window_height // 2  < object.x + object.size // 2 <= Constants.window_height - object.size // 2 and object.y - object.speed // 2 > Constants.window_height//2 + Constants.obstacle_width // 2:
-        print('5')
         move_upright(object)
         return None
     if (enemy_building_list[2] or (not enemy_building_list[2] and enemy_building_list[1])) and Constants.window_height // 2 < object.x <= Constants.window_height - Constants.path_width and object.y - object.speed <= Constants.window_height//2 + Constants.obstacle_width // 2:
-        print('6')
         move_right(object)
         return None
 
@@ -111,9 +103,19 @@ def check_events():
     for event in GAME_EVENTS.get():
         if event.type == GAME_GLOBALS.QUIT:
             quitGame()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                if Constants.game_paused:
+                    Constants.game_paused = False
+                else:
+                    Constants.game_paused = True
 
 def make_troop(x,y,type,team_list):
-    tmp = 'Classes.' + type + str((x,y))
+    if team_list == Constants.AI_troop_list:
+        color = (255,0,0)
+    else:
+        color = (0,0,255)
+    tmp = 'Classes.' + type + str((x,y,color))
     built_troop = eval(tmp)
     team_list.append(built_troop)
 
@@ -124,16 +126,23 @@ def check_attack(object,enemy_troop_list,enemy_building_list,window,time):
     else:
         attack_range = object.attack_range
     if object.target is not None:
+        if (object.target.x + object.target.size // 2 - object.x - object.size // 2) ** 2 + (
+                object.target.y + object.target.size // 2 - object.y - object.size // 2) ** 2 > attack_range ** 2:
+            object.target = None
+    if object.target is not None:
         attack_target(object, window, enemy_troop_list,enemy_building_list, time)
     if object.target is None:
         for obj in enemy_troop_list:
             if type(obj) != bool:
-                if (obj.x + obj.size//2 - object.x - object.size//2)**2 + (obj.y + obj.size//2 - object.y - object.size//2)**2 < attack_range ** 2 :
-                    object.target = obj
+                if (obj.x + obj.size//2 - object.x - object.size//2)**2 + (obj.y + obj.size//2 - object.y - object.size//2)**2 <= attack_range ** 2 :
+                    if type(object) == Classes.Building:
+                        object.target = obj
+                    elif (object.target_type == 'Ground' and obj.type == 'Ground') or object.target_type == 'Air $ Ground': #or (type(object) != Classes.Ballon and type(object) != Classes.Giant and type(object) != Classes.Hog)
+                        object.target = obj
     if object.target is None:
         for obj in enemy_building_list:
             if type(obj) != bool:
-                if (obj.x + obj.size//2 - object.x - object.size//2)**2 + (obj.y + obj.size//2 - object.y - object.size//2)**2 < attack_range**2 :
+                if (obj.x + obj.size//2 - object.x - object.size//2)**2 + (obj.y + obj.size//2 - object.y - object.size//2)**2 <= attack_range**2 :
                     object.target = obj
 
 def attack_target(object,window,enemy_troop_list,enemy_building_list,time):
@@ -141,40 +150,66 @@ def attack_target(object,window,enemy_troop_list,enemy_building_list,time):
         attack_range = object.size
     else:
         attack_range = object.attack_range
-    if (object.target.x + object.target.size//2 - object.x - object.size//2)**2 + (object.target.y + object.target.size//2 - object.y - object.size//2)**2 < attack_range ** 2:
+    if (object.target.x + object.target.size//2 - object.x - object.size//2)**2 + (object.target.y + object.target.size//2 - object.y - object.size//2)**2 <= attack_range ** 2:
         object.attack(time,window,enemy_troop_list,enemy_building_list)
 
 def CheckBounds():
     global cards,draggingCard,tmp_mouse
     if Constants.mousePressed == True:
-        for card in Constants.cards:
+        for card in Constants.game_cards:
             if Constants.mousePosition[0] > card["position"][0] and Constants.mousePosition[0] < card["position"][0] + Constants.cardsSize:
                 if Constants.mousePosition[1] > card["position"][1] and Constants.mousePosition[1] < card["position"][1] + Constants.cardsSize:
                    Constants.draggingCard[0] = True
                    Constants.draggingCard[1] = card["id"]
     if Constants.draggingCard[0] == True and Constants.mousePressed == False:
-
         Constants.tmp_mouse=(Constants.mousePosition[0],Constants.mousePosition[1])
 
 def drawCard(window):
     tmp = [Constants.mousePosition[0],Constants.mousePosition[1]]
-    for card in Constants.cards:
+    for card in Constants.game_cards:
         if tmp[1] < 400:
             tmp[1] = 400
         if tmp[0] > 700:
             tmp[0] = 700
         if Constants.draggingCard[0] == True and Constants.draggingCard[1] == card["id"]:
-            print("hjgh")
             window.blit(card["image"],(tmp[0] - Constants.cardsSize / 2,tmp[1] - Constants.cardsSize / 2))
             if Constants.draggingCard[0] == True:
-                print("hshbh")
                 if pygame.mouse.get_pressed()[0]== False:
-                    print("kir")
-                    print(card["type"])
-                    if Constants.elixir_costs[card['type']] <= Constants.elixir_count:
+                    if Constants.elixir_costs[card['type']] <= Constants.elixir_count_player:
                         make_troop(tmp[0],tmp[1],card["type"],Constants.player_troop_list)
                         Constants.draggingCard[0] = False
-                        Constants.elixir_count -= Constants.elixir_costs[card['type']]
-    for card in Constants.cards:
+                        Constants.elixir_count_player -= Constants.elixir_costs[card['type']]
+    for card in Constants.game_cards:
         window.blit(card["image"],card["position"])
 
+def Show_menu(window,i,game_started):
+    window.blit(Constants.menu_image,(0,0))
+    for card in Constants.all_Cards:
+        window.blit(card["image"],card["position"])
+    number_of_selected_cards = 0
+    for card in Constants.game_cards:
+        window.blit(card['image'],Constants.menu_coordinates[number_of_selected_cards])
+        number_of_selected_cards += 1
+    if pygame.mouse.get_pressed()[0] == 1:
+        for card in Constants.all_Cards:
+            if Constants.mousePosition[0] > card["position"][0] and Constants.mousePosition[0] < card["position"][0] + Constants.cardsSize:
+                if Constants.mousePosition[1] > card["position"][1] and Constants.mousePosition[1] < card["position"][1] + Constants.cardsSize:
+                    if Constants.all_Cards[card['id']] not in Constants.game_cards:
+                        window.blit(card["image"],Constants.menu_coordinates[i])
+                        i += 1
+                        Constants.game_cards.append(Constants.all_Cards[card["id"]])
+
+def check_result(player_building_list,AI_building_list):
+    result = False
+    if not player_building_list[1]:
+        result = 'Lose'
+    if not AI_building_list[1]:
+        result = 'Win'
+    return result
+
+def pause_game(window):
+    while Constants.game_paused:
+        check_events()
+
+def AI(player_list,ai_list,elixir_count,last_elixir):
+    pass

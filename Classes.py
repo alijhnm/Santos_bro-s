@@ -28,10 +28,11 @@ class Card:
         self.move_up_image = None
         self.move_down_image = None
         self.last_attack = 0
-        self.team_color = (0,0,255)
+        self.team_color = (255,255,255)
 
     def show(self,window,image):
-        window.blit(self.move_up_image,(self.x,self.y))
+        shown_image = 'self.' + image
+        window.blit(eval(shown_image),(self.x,self.y))
         pygame.draw.rect(window,(100,100,100),(self.x,self.y - Constants.hp_bar_offset,self.size,Constants.hp_bar_width))
         pygame.draw.rect(window,self.team_color,(self.x,self.y - Constants.hp_bar_offset,int(self.hp / self.max_health * self.size),Constants.hp_bar_width))
 
@@ -52,72 +53,78 @@ class Card:
 
 class Barbarian(Card):
     '''Doc for Barbarian'''
-    def __init__(self,X,Y):
+    def __init__(self,X,Y,TeamColor):
         Card.__init__(self,636,Constants.medium_speed,159,'Ground','Ground','Melee',1500,False,Constants.medium_size)
         self.x = X
         self.y = Y
         self.elixir_cost = 2
-        self.move_up_image = pygame.image.load('Barrel.png')
-        self.attack_image = pygame.image.load('Archer.png')
-
+        self.move_up_image = pygame.image.load('Barbarian-move_up.png')
+        self.move_down_image = pygame.image.load('Barbarian-move_down.png')
+        self.team_color = TeamColor
 
 class Archer(Card):
     '''Doc for Archer'''
-    def __init__(self,X,Y):
+    def __init__(self,X,Y,TeamColor):
         Card.__init__(self,254,Constants.medium_speed,86,'Ground','Air $ Ground',5 * Constants.AttackRange,1200,False,Constants.small_size)
         self.x = X
         self.y = Y
         self.elixir_cost = 2
-        self.move_up_image = pygame.image.load('Archer1.png')
-
+        self.move_up_image = pygame.image.load('Archer-move_up.png')
+        self.move_down_image = pygame.image.load('Archer-move_down.png')
+        self.team_color = TeamColor
 
 class Giant(Card):
     '''Doc for Giant'''
-    def __init__(self, X, Y):
+    def __init__(self, X, Y,TeamColor):
         Card.__init__(self, 3344, Constants.low_speed, 211, 'Ground', 'Building', 'Melee', 1500,
                       'False', Constants.big_size)
         self.x = X
         self.y = Y
         self.elixir_cost = 5
-        self.move_up_image = pygame.image.load('Giant2.png')
-
+        self.move_up_image = pygame.image.load('Giant-move_up.png')
+        self.move_down_image = pygame.image.load('Giant-move_down.png')
+        self.team_color = TeamColor
 class Dragon(Card):
     '''Doc for Dragon'''
-    def __init__(self, X, Y):
+    def __init__(self, X, Y,TeamColor):
         Card.__init__(self, 1064, Constants.fast_speed, 133, 'Air', 'Air $ Ground', 3.5 * Constants.AttackRange, 1600, Constants.small_area_of_effect, Constants.medium_size)
         self.x = X
         self.y = Y
         self.elixir_cost = 4
-        self.move_up_image = pygame.image.load('dragon2.png')
+        self.move_up_image = pygame.image.load('Dragon-move_up.png')
+        self.move_down_image = pygame.image.load('Dragon-move_down.png')
+        self.team_color = TeamColor
 
 class PEKKA(Card):
     '''Doc for PEKKA'''
-    def __init__(self, X, Y):
-        Card.__init__(self, 3458, Constants.low_speed, 678, 'Ground', 'Ground', 'Melee', 1800,False, Constants.big_size)
+    def __init__(self, X, Y,TeamColor):
+        Card.__init__(self, 3458, Constants.low_speed, 678, 'Ground', 'Ground', 'Melee', 2000,False, Constants.big_size)
         self.x = X
         self.y = Y
         self.elixir_cost = 7
-        self.move_up_image = pygame.image.load('peka2.png')
-
+        self.move_up_image = pygame.image.load('PEKKA-move_up.png')
+        self.move_down_image = pygame.image.load('PEKKA-move_down.png')
+        self.team_color = TeamColor
 class Ballon(Card):
     '''Doc for Ballon'''
-    def __init__(self, X, Y):
+    def __init__(self, X, Y,TeamColor):
         Card.__init__(self, 798, Constants.medium_speed, 798, 'Air', 'Building', 'Melee', 3000,Constants.medium_area_of_effect, Constants.big_size)
         self.x = X
         self.y = Y
         self.elixir_cost = 5
-        self.move_up_image = pygame.image.load('dragon1.png')
-
+        self.move_up_image = pygame.image.load('Ballon.png')
+        self.move_down_image = pygame.image.load('Ballon.png')
+        self.team_color = TeamColor
 class Hog(Card):
     '''Doc for Hog'''
-    def __init__(self, X, Y):
-        Card.__init__(self, 1000, Constants.fast_speed, 160, 'Ground', 'Ground', 'Melee', 1200,False, Constants.medium_size)
+    def __init__(self, X, Y,TeamColor):
+        Card.__init__(self, 1000, Constants.fast_speed, 160, 'Ground', 'Building', 'Melee', 1200,False, Constants.medium_size)
         self.x = X
         self.y = Y
         self.elixir_cost = 4
-        self.move_up_image = pygame.image.load('hog1.png')
-
-
+        self.move_up_image = pygame.image.load('Hog-move_up.png')
+        self.move_down_image = pygame.image.load('Hog-move_down.png')
+        self.team_color = TeamColor
 class Building:
     '''Doc for Building'''
     def __init__(self,X,Y,MaxHealth,AttackDamage,AttackRange,AttackInterval,AreaOfEffect,Address,TeamColor):
