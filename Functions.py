@@ -233,3 +233,11 @@ def pause_game(window):
 
 def AI(player_list,ai_list,elixir_count,last_elixir):
     pass
+
+
+
+
+
+
+
+define go button method and set icon for each file extension
